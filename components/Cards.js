@@ -13,6 +13,7 @@ function Cards({ title, src = "https://cdn.searchenginejournal.com/wp-content/up
                         layout='fixed'
                         // objectFit='cover'
                         className='p-0'
+                        alt="card"
                     />
                     <div className='flex justify-center p-2'>
                         {title}

@@ -55,6 +55,7 @@ const Header = () => {
                     width={40}
                     height={40}
                     layout="fixed"
+                    alt="Profile"
                 />
 
                 <p className='whitespace-nowrap font-semibold pr-3'>{session.data.user.name.split(" ")[0]}</p>

@@ -28,7 +28,7 @@ export default function Home({ session }) {
           {/* Sidebar */}
           {/* <Sidebar /> */}
           {/* Feed */}
-          <div className="m-20  ml-[300px] mr-[150px] mt-5 mr-1 no-wrap grid md:grid-cols-3 gap-10">
+          <div className="m-20  ml-[300px]  mt-5 mr-1 no-wrap grid md:grid-cols-3 gap-10">
             <Cards title="Students Certification" src="https://cdn.searchenginejournal.com/wp-content/uploads/2021/12/google-career-certificates-61bd445f96b29-sej-760x400.png" />
             <Cards title="Awards and Rewards" src="https://cdn.pixabay.com/photo/2016/09/16/19/20/trophy-1674911__340.png" />
             <Cards title="Workshops" src="https://cdn.pixabay.com/photo/2018/08/29/09/12/business-3639451__340.jpg" />
