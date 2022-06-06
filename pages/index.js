@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 import Feed from "../components/Feed";
 import Cards from "../components/Cards";
 export default function Home({ session }) {
-  if (!session) return (
+  if (session) return (
     <div className="grid place-items-center hover:cursor-pointer hover:bg-blue-500">
       <h1 onClick={signIn}>Log In</h1>
     </div>
