@@ -46,12 +46,14 @@ export default function Home({ session }) {
           </div>
         </div>
         {/* Widgets */}
-        <div className="ml-[300px]  mt-[40px] mr-[220px] rounded-md p-4 flex flex-col bg-gray-50 drop-shadow-md">
-          <h1 className="font-semibold text-gray-400 text-lg drop-shadow-md">
-            Students Certification
-          </h1>
-          <div className="flex gap-10 p-4 pl-0 h-[10vh] w-[80vw] mb-[200px]">
+        <div>
+          <div className="ml-[300px]  mt-[40px] mr-[220px] mb-[100px] rounded-md p-4 flex flex-col bg-gray-50 drop-shadow-md">
+            <h1 className="font-semibold text-gray-400 text-lg drop-shadow-md">
+              Students Certification
+            </h1>
+            <div className="flex gap-10 p-4 pl-0 h-[10vh] w-[80vw] mb-[200px]">
 
+            </div>
           </div>
         </div>
       </main>
