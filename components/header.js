@@ -26,7 +26,7 @@ const Header = () => {
         <div className='sticky-top-0  z-50 bg-white p-2 flex items-center lg:px-5 shadow-md'>
             {/* Left */}
             <div>
-                <Link href="/"><a href='/'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a></Link>
+                <Link href="/"><a><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a></Link>
 
             </div>
             <div>
@@ -50,7 +50,7 @@ const Header = () => {
             {/* Right */}
         
             <div className='flex items-center sm:space-x-2 justify-end'>
-                <a href="/profile">
+                <Link href="/profile"><a>
                 <Image
 
                     className='rounded-full cursor-pointer'
@@ -61,8 +61,9 @@ const Header = () => {
                     alt="Profile"
                 />
                 </a>
+                </Link>
 
-                <a href="/profile"><p className='whitespace-nowrap font-semibold pr-3'>Joe </p></a>
+                <Link href="/profile"><a><p className='whitespace-nowrap font-semibold pr-3'>Joe </p></a></Link>
                 
                 {/* <ViewGridIcon className='icon' />
                 <ChatIcon className='icon' />
