@@ -6,6 +6,8 @@ import Feed from "../components/Feed";
 import Cards from "../components/Cards";
 
 import Router from 'next/router'
+import Link from "next/link";
+
 export default function Home({ session }) {
   if (session) return (
     <div className="grid place-items-center hover:cursor-pointer hover:bg-blue-500">
@@ -31,9 +33,9 @@ export default function Home({ session }) {
           {/* <Sidebar /> */}
           {/* Feed */}
           <div className="m-20  ml-[300px]  mt-5 mr-1 no-wrap grid md:grid-cols-3 gap-10">
-            <a href="/StudentCertificate"><Cards title="Students Certification" src="https://cdn.searchenginejournal.com/wp-content/uploads/2021/12/google-career-certificates-61bd445f96b29-sej-760x400.png"  /></a>
-            <a href="/Awards"><Cards title="Awards and Rewards" src="https://cdn.pixabay.com/photo/2016/09/16/19/20/trophy-1674911__340.png" /></a>
-            <a href="/Workshops"><Cards title="Workshops" src="https://cdn.pixabay.com/photo/2018/08/29/09/12/business-3639451__340.jpg" /></a>
+            <Link href="/StudentCertificate"><a><Cards title="Students Certification" src="https://cdn.searchenginejournal.com/wp-content/uploads/2021/12/google-career-certificates-61bd445f96b29-sej-760x400.png"  /></a></Link>
+            <Link href="/Awards"><a><Cards title="Awards and Rewards" src="https://cdn.pixabay.com/photo/2016/09/16/19/20/trophy-1674911__340.png" /></a></Link>
+            <Link href="/Workshops"><a><Cards title="Workshops" src="https://cdn.pixabay.com/photo/2018/08/29/09/12/business-3639451__340.jpg" /></a></Link>
 
           </div>
         </div>
