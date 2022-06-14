@@ -15,6 +15,7 @@ import {
 } from '@heroicons/react/outline';
 import HeaderIcon from './HeaderIcon';
 import { signOut, useSession } from 'next-auth/react';
+import Link from '../node_modules/next/link';
 
 const Header = () => {
     // const session = useSession();
@@ -25,7 +26,7 @@ const Header = () => {
         <div className='sticky-top-0  z-50 bg-white p-2 flex items-center lg:px-5 shadow-md'>
             {/* Left */}
             <div>
-                <a href='/'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a>
+                <Link href="/"><a href='/'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a></Link>
 
             </div>
             <div>
