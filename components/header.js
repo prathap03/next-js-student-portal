@@ -25,7 +25,7 @@ const Header = () => {
         <div className='sticky-top-0  z-50 bg-white p-2 flex items-center lg:px-5 shadow-md'>
             {/* Left */}
             <div>
-                <a href='https://www.srec.ac.in'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a>
+                <a href='/'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a>
 
             </div>
             <div>
@@ -47,9 +47,11 @@ const Header = () => {
                 </div>
             </div>
             {/* Right */}
+        
             <div className='flex items-center sm:space-x-2 justify-end'>
+                <a href="/profile">
                 <Image
-                    onClick={signOut}
+
                     className='rounded-full cursor-pointer'
                     src="https://cdn.pixabay.com/photo/2022/06/03/20/15/sunset-7240788__340.jpg"
                     width={40}
@@ -57,8 +59,10 @@ const Header = () => {
                     layout="fixed"
                     alt="Profile"
                 />
+                </a>
 
-                <p className='whitespace-nowrap font-semibold pr-3'>Joe </p>
+                <a href="/profile"><p className='whitespace-nowrap font-semibold pr-3'>Joe </p></a>
+                
                 {/* <ViewGridIcon className='icon' />
                 <ChatIcon className='icon' />
                 <BellIcon className='icon' />
