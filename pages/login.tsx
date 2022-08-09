@@ -40,7 +40,7 @@ export default function Login() {
             <div className="flex flex-col">
                 <h1 className="text-[#0496FF] leading-none uppercase font-bold text-[0.8rem]">Sri Ramakrishna Engineering College
 An AUTONOMOUS Institution</h1>
-<p className="leading-none text-black font-light text-[0.7rem]">Reaccredited by NAAC with "A+" Grade,<br></br>
+<p className="leading-none text-black font-light text-[0.7rem]">Reaccredited by NAAC with &apos;A+&apos; Grade,<br></br>
 ISO 9001:2015 certified, All eligible programmes Accredited by NBA,
 Approved by AICTE, permanently Affiliated to Anna University, Chennai.</p>
             </div>
