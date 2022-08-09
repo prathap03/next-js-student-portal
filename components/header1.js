@@ -14,6 +14,7 @@ import {
     ShoppingCartIcon
 } from '@heroicons/react/outline';
 import HeaderIcon from './HeaderIcon';
+import Link from '../node_modules/next/link';
 
 
 const Header1 = () => {
