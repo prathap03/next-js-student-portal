@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { doc } from '@firebase/firestore'; // for creating a pointer to our Document
 import { setDoc } from 'firebase/firestore';
 import { firestore } from "../components/FirebaseConfig";
+import Link from "next/link";
 
 
 
@@ -103,12 +104,12 @@ function Signup() {
                                             Remember me
                                         </label>
                                     </div>
-                                    <a
+                                    <Link
                                         href="#!"
                                         className="text-blue-600 transition duration-200 ease-in-out hover:text-blue-700 focus:text-blue-700 active:text-blue-800"
                                     >
                                         Forgot password?
-                                    </a>
+                                    </Link>
                                 </div>
                                 {/* Submit button */}
                                 <button
