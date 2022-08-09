@@ -17,7 +17,7 @@ import HeaderIcon from './HeaderIcon';
 import { signOut, useSession } from 'next-auth/react';
 
 const Header = () => {
-    const session = useSession();
+    // const session = useSession();
 
 
 
@@ -51,14 +51,14 @@ const Header = () => {
                 <Image
                     onClick={signOut}
                     className='rounded-full cursor-pointer'
-                    src={session.data.user.image}
+                    src="https://cdn.pixabay.com/photo/2022/06/03/20/15/sunset-7240788__340.jpg"
                     width={40}
                     height={40}
                     layout="fixed"
                     alt="Profile"
                 />
 
-                <p className='whitespace-nowrap font-semibold pr-3'>{session.data.user.name.split(" ")[0]}</p>
+                <p className='whitespace-nowrap font-semibold pr-3'>Joe </p>
                 {/* <ViewGridIcon className='icon' />
                 <ChatIcon className='icon' />
                 <BellIcon className='icon' />
