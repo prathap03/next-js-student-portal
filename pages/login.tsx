@@ -47,7 +47,7 @@ Approved by AICTE, permanently Affiliated to Anna University, Chennai.</p>
      
             </div>
             <pre>{email+"@srec.ac.in"}</pre>
-            <pre>{error}</pre>
+           
             <h1 className='font-semibold mt-4 text-[#FF0000]/60  text-[1.7rem] text-shadow-md'>SREC Certificate Portal</h1>
             <h1 className='font-medium text-[#9C7878] mt-4 text-[1.8rem]'>Welcome, Sign in to continue</h1>
             <div className="flex flex-col justify-start w-3/4 mt-6 space-y-16">
