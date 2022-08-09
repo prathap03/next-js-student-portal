@@ -15,6 +15,7 @@ import {
 } from '@heroicons/react/outline';
 import HeaderIcon from './HeaderIcon';
 import { signOut, useSession } from 'next-auth/react';
+import Link from '../node_modules/next/link';
 
 const Header = () => {
     // const session = useSession();
