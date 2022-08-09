@@ -22,18 +22,18 @@ const Header = () => {
 
 
     return (
-        <div className='sticky-top-0  z-50 bg-white p-2 flex items-center lg:px-5 shadow-md'>
+        <div className='z-50 flex items-center p-2 bg-white shadow-md sticky-top-0 lg:px-5'>
             {/* Left */}
             <div>
-                <a href='https://www.srec.ac.in'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a>
+                <a href='/'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a>
 
             </div>
             <div>
                 <h1 className='text-blue-500 text-[40px] ml-2 p-2'>SREC</h1>
             </div>
-            {/* <div className='flex ml-2 rounded-full bg-gray-100 p-2'>
+            {/* <div className='flex p-2 ml-2 bg-gray-100 rounded-full'>
                 <SearchIcon className='h-6 text-gray-600' />
-                <input className='hidden md:inline-flex ml-2 items-center bg-transparent outline-none placeholder-gray-500 flex-shrink ' type="text" placeholder='Search Facebook' />
+                <input className='items-center flex-shrink hidden ml-2 placeholder-gray-500 bg-transparent outline-none md:inline-flex ' type="text" placeholder='Search Facebook' />
             </div> */}
             {/* Center  */}
             <div className='flex justify-center flex-grow'>
@@ -47,9 +47,11 @@ const Header = () => {
                 </div>
             </div>
             {/* Right */}
-            <div className='flex items-center sm:space-x-2 justify-end'>
+        
+            <div className='flex items-center justify-end sm:space-x-2'>
+                <a href="/profile">
                 <Image
-                    onClick={signOut}
+
                     className='rounded-full cursor-pointer'
                     src="https://cdn.pixabay.com/photo/2022/06/03/20/15/sunset-7240788__340.jpg"
                     width={40}
@@ -57,8 +59,10 @@ const Header = () => {
                     layout="fixed"
                     alt="Profile"
                 />
+                </a>
 
-                <p className='whitespace-nowrap font-semibold pr-3'>Joe </p>
+                <a href="/profile"><p className='pr-3 font-semibold whitespace-nowrap'>Joe </p></a>
+                
                 {/* <ViewGridIcon className='icon' />
                 <ChatIcon className='icon' />
                 <BellIcon className='icon' />

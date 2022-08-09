@@ -2,7 +2,7 @@ import Header1 from "../components/header1"
 import { useState } from 'react';
 import { doc } from '@firebase/firestore'; // for creating a pointer to our Document
 import { setDoc } from 'firebase/firestore';
-import { firestore } from "../components/FirebaseConfi";
+import { firestore } from "../components/FirebaseConfig";
 
 
 
@@ -49,25 +49,25 @@ function Signup() {
         <div>
             <Header1 />
             <section className="h-screen">
-                <div className="container px-6 py-12 h-full">
-                    <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-                        {/* <div className=" md:w-8/12 visible lg:w-6/12 mb-12 md:mb-0">
+                <div className="w-full h-full ">
+                    <div className="flex flex-wrap items-center justify-center w-full h-full text-gray-800 g-6 bg-red-50">
+                        {/* <div className="visible mb-12 md:w-8/12 lg:w-6/12 md:mb-0">
                             <img
                                 src="https://www.srec.ac.in/srec_admin/resource/uploads/src/oDQnjet6hO19072020093318img1.jpg"
                                 className="w-full"
                                 alt="Phone image"
                             />
                         </div> */}
-                        <div className="md:w-8/12 lg:w-5/12 lg:ml-20  bg-slate-100 p-20 rounded-xl shadow-md">
+                        <div className="p-20 shadow-md md:w-8/12 lg:w-5/12 lg:ml-20 bg-slate-100 rounded-xl">
                             <h1 className="text-[40px] text-center  mb-10">Login</h1>
                             <form onSubmit={handleSubmit}>
                                 {/* Email input */}
                                 <label className="font-semibold text-[18px]">Email:</label>
-                                <div className="mt-5 mb-6 pt-0 relative">
+                                <div className="relative pt-0 mt-5 mb-6">
 
                                     <input
                                         type="text"
-                                        className="form-control  block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                        className="block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         placeholder="Email address"
                                         onChange={e => setUser(e.target.value)}
                                     />
@@ -83,21 +83,21 @@ function Signup() {
                                 <div className="mt-5 mb-6">
                                     <input
                                         type="password"
-                                        className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                        className="block w-full px-4 py-2 m-0 text-xl font-normal text-gray-700 transition ease-in-out bg-white border border-gray-300 border-solid rounded form-control bg-clip-padding focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         placeholder="Password"
                                         onChange={e => setPassword(e.target.value)}
                                     />
                                 </div>
-                                <div className="flex justify-between items-center mb-6">
+                                <div className="flex items-center justify-between mb-6">
                                     <div className="form-group form-check">
                                         <input
                                             type="checkbox"
-                                            className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                            className="float-left w-4 h-4 mt-1 mr-2 align-top transition duration-200 bg-white bg-center bg-no-repeat bg-contain border border-gray-300 rounded-sm appearance-none cursor-pointer form-check-input checked:bg-blue-600 checked:border-blue-600 focus:outline-none"
                                             id="exampleCheck3"
                                             defaultChecked={false}
                                         />
                                         <label
-                                            className="form-check-label inline-block text-gray-800"
+                                            className="inline-block text-gray-800 form-check-label"
                                             htmlFor="exampleCheck2"
                                         >
                                             Remember me
@@ -105,7 +105,7 @@ function Signup() {
                                     </div>
                                     <a
                                         href="#!"
-                                        className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
+                                        className="text-blue-600 transition duration-200 ease-in-out hover:text-blue-700 focus:text-blue-700 active:text-blue-800"
                                     >
                                         Forgot password?
                                     </a>
@@ -113,7 +113,7 @@ function Signup() {
                                 {/* Submit button */}
                                 <button
                                     type="submit"
-                                    className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                                    className="inline-block w-full py-3 text-sm font-medium leading-snug text-white uppercase transition duration-150 ease-in-out bg-blue-600 rounded shadow-md px-7 hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
                                 >
