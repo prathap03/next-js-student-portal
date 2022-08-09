@@ -25,7 +25,7 @@ const Header1 = () => {
         <div className='z-50 flex items-center p-2 bg-white shadow-md sticky-top-0 lg:px-5'>
             {/* Left */}
             <div>
-                <a href='https://www.srec.ac.in'><Image alt="logo" src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a>
+                <Link href='https://www.srec.ac.in'><Image alt="logo" src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></Link>
 
             </div>
             <div>

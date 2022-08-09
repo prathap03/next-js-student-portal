@@ -15,7 +15,7 @@ import {
 } from '@heroicons/react/outline';
 import HeaderIcon from './HeaderIcon';
 import { signOut, useSession } from 'next-auth/react';
-import Link from '../node_modules/next/link';
+import Link from 'next/link';
 
 const Header = () => {
     // const session = useSession();
@@ -26,7 +26,7 @@ const Header = () => {
         <div className='z-50 flex items-center p-2 bg-white shadow-md sticky-top-0 lg:px-5'>
             {/* Left */}
             <div>
-                <a href='/'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></a>
+                <Link href='/'><Image src="https://www.srec.ac.in/lib/images/logosrec.jpg" width={65} height={55} layout='fixed' /></Link>
 
             </div>
             <div>
@@ -50,7 +50,7 @@ const Header = () => {
             {/* Right */}
         
             <div className='flex items-center justify-end sm:space-x-2'>
-                <a href="/profile">
+                <Link href="/profile">
                 <Image
 
                     className='rounded-full cursor-pointer'
@@ -60,9 +60,9 @@ const Header = () => {
                     layout="fixed"
                     alt="Profile"
                 />
-                </a>
+                </Link>
 
-                <a href="/profile"><p className='pr-3 font-semibold whitespace-nowrap'>Joe </p></a>
+                <Link href="/profile"><p className='pr-3 font-semibold whitespace-nowrap'>Joe </p></Link>
                 
                 {/* <ViewGridIcon className='icon' />
                 <ChatIcon className='icon' />

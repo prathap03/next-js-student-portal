@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import Header from '../components/header'
 
@@ -7,13 +8,13 @@ export default function profile() {
             <Header/>
             <div className="m-[10px] p-[10px] bg-[#fff] h-screen ">
 
-                <div className="container-fluid flex flex-col justify-center">
-                    <div className="bg-gray-100 p-20 rounded-md shadow-md">
+                <div className="flex flex-col justify-center container-fluid">
+                    <div className="p-20 bg-gray-100 rounded-md shadow-md">
                         <div className="panel-heading">
                             <h3 className="panel-title">Profile</h3>
                         </div>
-                        <div className="panel-body flex">
-                            <div className="col-sm-2 text-center" id="profile-container">
+                        <div className="flex panel-body">
+                            <div className="text-center col-sm-2" id="profile-container">
                                 <img
                                     className="w-[130px] h-[152px] rounded-[5%] mt-[4px] mb-[20px] object-cover"
                                     src="https://cdn.pixabay.com/photo/2022/06/03/20/15/sunset-7240788__340.jpg"
@@ -78,9 +79,9 @@ export default function profile() {
                                     <div className="col-sm-7">
                                         <p>
                                             srec@srec.ac.in &nbsp;&nbsp;
-                                            <a href="/updateemail/">
+                                            <Link href="/updateemail/">
                                                 <i className="fas fa-pen bullet" />
-                                            </a>
+                                            </Link>
                                         </p>
                                     </div>
                                 </div>
@@ -91,9 +92,9 @@ export default function profile() {
                                     <div className="col-sm-7">
                                         <p>
                                             9994303763 &nbsp;&nbsp;
-                                            <a href="/updatemobile/">
+                                            <Link href="/updatemobile/">
                                                 <i className="fas fa-pen bullet" />
-                                            </a>
+                                            </Link>
                                         </p>
                                     </div>
                                 </div>

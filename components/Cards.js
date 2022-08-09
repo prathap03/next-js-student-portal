@@ -23,17 +23,17 @@ function Cards({ title, src = "https://cdn.searchenginejournal.com/wp-content/up
             </div>
 
             {/* <div className="flex justify-center">
-                <div className="rounded-lg shadow-lg bg-white max-w-sm">
-                    <a href="#!">
+                <div className="max-w-sm bg-white rounded-lg shadow-lg">
+                    <Link href="#!">
                         <img
                             className="rounded-t-lg"
                             src="https://mdbootstrap.com/img/new/standard/nature/184.jpg"
                             alt=""
                         />
-                    </a>
+                    </Link>
                     <div className="p-6">
-                        <h5 className="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                        <p className="text-gray-700 text-base mb-4">
+                        <h5 className="mb-2 text-xl font-medium text-gray-900">Card title</h5>
+                        <p className="mb-4 text-base text-gray-700">
                             Some quick example text to build on the card title and make up the bulk
                             of the card's content.
                         </p>
