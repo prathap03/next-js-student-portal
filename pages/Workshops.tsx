@@ -41,7 +41,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
     return () => {
       
     }
-  }, [])
+  }, [user.uid])
   
 
   return (
@@ -53,7 +53,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
         <h1 className='text-[30px] text-center relative top-0 p-[-20px]'>Workshop</h1>
         {Data && Data.length!==0?(
           Data.map((data)=>{
-            return <h1>{data.name} {data.issueMonth}</h1>
+            return <h1 key={data.name}>{data.name} {data.issueMonth}</h1>
           })
           ) :!Data ?(<div className='flex items-center justify-center '><Oval/></div>): <h1>No Data Found</h1>}
         </div>

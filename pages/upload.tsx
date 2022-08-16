@@ -5,12 +5,12 @@ import { useAuth } from '../context/AuthContext'
 import NavBar from "../components/Navbar"
 
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
-import { default as pdfConverter } from 'pdf-poppler'
+
 import { fireStore, storage } from '../lib/firebase'
 import Oval from '../node_modules/react-loader-spinner/dist/loader/Oval'
 import { doc,setDoc } from 'firebase/firestore';
 
-function upload() {
+function Upload() {
     const [image, setImage] = useState(null);
     const [createObjectURL, setCreateObjectURL] = useState(null);
     const [expiry, setExpiry] = useState(false)
@@ -203,12 +203,12 @@ function upload() {
                                 <select placeholder='Select Month..' onChange={(e) => { setIssueMonth(e.target.value) }} required className='h-10 rounded-lg w-[100%]' name="issueMonth" id="issueMonth">
 
                                     {months.map((month, idx) => {
-                                        return <option value={idx + 1}>{month}</option>
+                                        return <option key={month} value={idx + 1}>{month}</option>
                                     })}
                                 </select>
-                                <select placeholder='Select Month..' onChange={(e) => { setIssueYear(e.target.value) }} required className=' h-10 rounded-lg w-[100%]' name="issueYear" id="issueYear">
+                                <select placeholder='Select Year..' onChange={(e) => { setIssueYear(e.target.value) }} required className=' h-10 rounded-lg w-[100%]' name="issueYear" id="issueYear">
                                     {year.map((year) => {
-                                        return <option value={year}>{year}</option>
+                                        return <option key={year} value={year}>{year}</option>
                                     })}
                                 </select>
                             </div>
@@ -219,12 +219,12 @@ function upload() {
                                         <select placeholder='Select Month..' onChange={(e) => { setExpiryMonth(e.target.value) }} required className='h-10 rounded-lg w-[100%]' name="cars" id="cars">
 
                                             {months.map((month, idx) => {
-                                                return <option value={idx + 1}>{month}</option>
+                                                return <option key={month} value={idx + 1}>{month}</option>
                                             })}
                                         </select>
                                         <select placeholder='Select Month..' onChange={(e) => { setExpiryYear(e.target.value) }} required className='h-10 rounded-lg w-[100%]' name="cars" id="cars">
                                             {year.map((year) => {
-                                                return <option value={year}>{year}</option>
+                                                return <option key={year} value={year}>{year}</option>
                                             })}
                                         </select>
                                     </div>
@@ -257,7 +257,7 @@ function upload() {
     )
 }
 
-export default upload
+export default Upload
 
 
 

@@ -52,8 +52,6 @@ export default function Home({ session }) {
         </div>
     </div>
 
-      
-      <script src="https://unpkg.com/tailwindcss-jit-cdn"></script>
     </div>
     
 
