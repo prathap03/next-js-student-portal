@@ -30,7 +30,7 @@ export default function Login() {
         await login(email+"@srec.ac.in",password)
         .then(() => {
           if(router.query.from){
-            router.push(router.query.from)
+            router.push(`${router.query.from}`)
           }else{
             router.push("/");
           }
