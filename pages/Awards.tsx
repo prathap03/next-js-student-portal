@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Header from '../components/header';
 
-import { storage } from '../components/FirebaseConfig';
+
 import { ref,uploadBytes } from "firebase/storage";
+import { storage } from '../lib/firebase';
 
 
 export default function AwardsAndRewards() {
