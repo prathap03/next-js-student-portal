@@ -1,8 +1,6 @@
 import Header from "../components/header";
 import Head from "next/head";
 import { getSession, signIn } from "next-auth/react";
-import Sidebar from "../components/Sidebar";
-import Feed from "../components/Feed";
 import Cards from "../components/Cards";
 import NavBar from "../components/Navbar"
 

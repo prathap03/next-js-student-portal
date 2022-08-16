@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import Header from '../components/header';
-
-
 import { ref,uploadBytes } from "firebase/storage";
 import { storage } from '../lib/firebase';
 

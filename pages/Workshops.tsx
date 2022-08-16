@@ -4,7 +4,7 @@ import Header from '../components/header';
 
 import {onSnapshot,collection,query,doc,where } from "firebase/firestore";
 import { fireStore } from '../lib/firebase';
-import Header1 from '../components/header1';
+
 import { useAuth } from '../context/AuthContext';
 import Oval from '../node_modules/react-loader-spinner/dist/loader/Oval';
 
