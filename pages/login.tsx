@@ -1,24 +1,40 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Image from "next/image"
-import { app, auth } from "../components/FirebaseConfig";
+// import { app, auth } from "../components/FirebaseConfig";
 import { useRouter } from "next/router";
-import {getAuth,signInWithEmailAndPassword} from "firebase/auth"
+
 import App from "../node_modules/next/app";
+import { useAuth } from "../context/AuthContext";
+import { auth } from "../lib/firebase";
 
 export default function Login() {
     var [email,setEmail]=useState("")
     var [password,setPassword]=useState("")
     const [error, setError] = useState(null);
     const router = useRouter() 
+    const {user,login} = useAuth()
+
+   
+
+    useEffect(()=>{
+      if(user){
+        router.back()
+      }
+    },[router])
     
    
 
-    const LogIn = () => {
-        console.log("process...")
+    const handleSubmit = async (e: any) => {
+       e.preventDefault()
         setError(null)
-        signInWithEmailAndPassword(auth,email+"@srec.ac.in", password)
+        await login(email+"@srec.ac.in",password)
         .then(() => {
-          router.push("/");
+          if(router.query.from){
+            router.push(router.query.from)
+          }else{
+            router.push("/");
+          }
+          
         })
         .catch(error => {
           setError(error.message)
@@ -28,6 +44,7 @@ export default function Login() {
 
 
   return (
+    <form onSubmit={(e)=>(handleSubmit(e))}>
     <div>
     <Image className="relative" src="/srecbg.jpg"  layout="fill"/>
     <div className="relative flex items-center justify-center w-screen h-screen">
@@ -46,7 +63,7 @@ Approved by AICTE, permanently Affiliated to Anna University, Chennai.</p>
             </div>
      
             </div>
-            <pre>{email+"@srec.ac.in"}</pre>
+           
            
             <h1 className="font-semibold mt-4 text-[#FF0000]/60  text-[1.7rem] text-shadow-md">SREC Certificate Portal</h1>
             <h1 className="font-medium text-[#9C7878] mt-4 text-[1.8rem]">Welcome, Sign in to continue</h1>
@@ -57,11 +74,12 @@ Approved by AICTE, permanently Affiliated to Anna University, Chennai.</p>
                 </div>
                 <input value={password} onChange={(event)=>{setPassword(event.target.value)}}  className="p-2 h-[3.8rem] text-[1.25rem] placeholder:text-[D9D9D9] placeholder:text-[1.25rem] rounded-full shadow-md  focus:outline-none" style={{padding:"20px"}} type="password" placeholder="Password" required/>
             </div>
-            <button onClick={LogIn} className="p-2  w-1/2 rounded-full h-[4rem]  mt-14 font-bold text-white bg-[#00BDC9] text-[1.5rem]">LOGIN</button>
+            <button type="submit" className="p-2  w-1/2 rounded-full h-[4rem]  mt-14 font-bold text-white bg-[#00BDC9] text-[1.5rem]">LOGIN</button>
         </div>
    
     </div>
    
     </div>
+    </form>
   )
 }

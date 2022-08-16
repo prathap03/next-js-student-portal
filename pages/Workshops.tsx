@@ -1,47 +1,61 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/header';
 
-import { storage } from '../components/FirebaseConfig';
-import { ref,uploadBytes } from "firebase/storage";
+
+import {onSnapshot,collection,query,doc,where } from "firebase/firestore";
+import { fireStore } from '../lib/firebase';
+import Header1 from '../components/header1';
+import { useAuth } from '../context/AuthContext';
+import Oval from '../node_modules/react-loader-spinner/dist/loader/Oval';
+
+
 
 
 export default function Workshops() {
   const [image, setImage] = useState(null);
-  const [createObjectURL, setCreateObjectURL] = useState(null);
+  const [Data,setData] = useState(null)
+  const {user} = useAuth()
 
-  const uploadToClient = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      const i = event.target.files[0];
+  
+  useEffect(() => {
 
-      setImage(i);
-      setCreateObjectURL(URL.createObjectURL(i));
+    const q = query(collection(fireStore, `students/${user.uid}/certificates`), where("type", "==", "Workshop or skill"));
+const unsubscribe = onSnapshot(q, (querySnapshot) => {
+  const cities = [];
+  querySnapshot.forEach((doc) => {
+      cities.push(doc.data());
+  });
+  setData(cities)
+  console.log("Current cities in CA: ", cities[0]);
+  console.log(cities.length)
+});
+
+    
+    
+    // Later ...
+    
+    // Stop listening to changes
+    
+    
+  
+    return () => {
+      
     }
-  };
-
-  const uploadToServer = async (event) => {
-    if(image==null) return;
-    const imageRef = ref(storage,`images/workshops/${image.name}`);
-    uploadBytes(imageRef,image).then(()=>{
-      alert("Image Uploaded");
-    });
-  };
+  }, [])
+  
 
   return (
     <div>
       <Header/>
       <div className='flex justify-center h-screen'>
+     
       <div className='absolute flex flex-col justify-center h-auto p-20 mt-10 bg-gray-200 rounded-md shadow-md'>
         <h1 className='text-[30px] text-center relative top-0 p-[-20px]'>Workshop</h1>
-        <img className='p-2' src={createObjectURL} />
-        
-        <input className='p-2' type="file" name="myImage" onChange={uploadToClient} />
-        <button
-          className="p-2 text-white bg-blue-400 rounded-md "
-          type="submit"
-          onClick={uploadToServer}
-        >
-          Upload
-        </button>
+        {Data && Data.length!==0?(
+          Data.map((data)=>{
+            return <h1>{data.name} {data.issueMonth}</h1>
+          })
+          ) :!Data ?(<div className='flex items-center justify-center '><Oval/></div>): <h1>No Data Found</h1>}
         </div>
       </div>
     </div>
