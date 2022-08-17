@@ -16,7 +16,7 @@ import Image from '../node_modules/next/image';
 
 
 export default function Workshops() {
-  const [image, setImage] = useState(null);
+  
   const [Data, setData] = useState(null)
   const { user } = useAuth()
   const [search, setSearch] = useState(null)
