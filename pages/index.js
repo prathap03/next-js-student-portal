@@ -43,9 +43,9 @@ export default function Home({ session }) {
             <div className='p-8  flex-shrink   shadow-xl rounded-xl bg-[#F8F5F5]'>
                 <h1 className='font-normal font-sans text-[2rem]'>Certifications</h1>
                 <div className="flex justify-start flex-shrink gap-10 mt-5 md:grid-cols-3">
-            <Link href="/StudentCertificate" as="StudentCertificate"><Cards className="flex-shrink" title="Students Certification" src="https://cdn.searchenginejournal.com/wp-content/uploads/2021/12/google-career-certificates-61bd445f96b29-sej-760x400.png"  /></Link>
-            <Link href="/Awards"><Cards title="Awards and Rewards" className="flex-shrink " src="https://cdn.pixabay.com/photo/2016/09/16/19/20/trophy-1674911__340.png" /></Link>
-            <Link href="/Workshops"><Cards title="Workshops" className="flex-shrink" src="https://cdn.pixabay.com/photo/2018/08/29/09/12/business-3639451__340.jpg" /></Link>
+            <Link href="/academic" ><a><Cards className="flex-shrink" title="Academic Certificates" src="https://cdn.searchenginejournal.com/wp-content/uploads/2021/12/google-career-certificates-61bd445f96b29-sej-760x400.png"  /></a></Link>
+            <Link href="/eca"><a><Cards title="Extra-Curricular Certificates" className="flex-shrink " src="https://cdn.pixabay.com/photo/2016/09/16/19/20/trophy-1674911__340.png" /></a></Link>
+            <Link href="/workshops"><a><Cards title="Workshops and Skill Certificates" className="flex-shrink" src="https://cdn.pixabay.com/photo/2018/08/29/09/12/business-3639451__340.jpg" /></a></Link>
 
           </div>
             </div>

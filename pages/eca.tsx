@@ -15,7 +15,7 @@ import Image from '../node_modules/next/image';
 
 
 
-export default function Workshops() {
+export default function ExtraCurricular() {
   const [image, setImage] = useState(null);
   const [Data, setData] = useState(null)
   const { user } = useAuth()
@@ -33,7 +33,7 @@ export default function Workshops() {
       setSearch(null)
     }
 
-    const q = query(collection(fireStore, `students/${user.uid}/certificates`), search ? (where('name', '>=', search), where('name', '<=', search + '~')) : where("type", "==", "Workshop or skill"));
+    const q = query(collection(fireStore, `students/${user.uid}/certificates`), search ? (where('name', '>=', search), where('name', '<=', search + '~')) : where("type", "==", "eca"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const cities = [];
       querySnapshot.forEach((doc) => {
@@ -47,7 +47,7 @@ export default function Workshops() {
 
   useEffect(() => {
 
-    const q = query(collection(fireStore, `students/${user.uid}/certificates`), where("type", "==", "Workshop or skill"));
+    const q = query(collection(fireStore, `students/${user.uid}/certificates`), where("type", "==", "eca"));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const cities = [];
       querySnapshot.forEach((doc) => {
@@ -99,7 +99,7 @@ export default function Workshops() {
             </div>
             <div className='flex flex-col w-[93rem] gap-2 flex-grow  rounded-lg shadow-xl  bg-[#F8F5F5]'>
               <div className='flex justify-between mt-4 ml-4 mr-4'>
-                <h1 className='text-[2rem] font-semibold'>Workshop and skill</h1>
+                <h1 className='text-[2rem] font-semibold'>Extra-Curricular</h1>
                 <div className='flex flex-col'>
                   <select className="h-10 p-2 text-[1.1rem] text-white font-semibold bg-blue-500 rounded-full w-22" >
                     <option value="" disabled selected>Sort</option>
@@ -151,5 +151,3 @@ export default function Workshops() {
     </div>
   );
 }
-
-
