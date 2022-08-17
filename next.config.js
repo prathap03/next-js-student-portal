@@ -14,6 +14,8 @@ const nextConfig = {
       "cdn.pixabay.com"
     ],
   },
+
 }
+
 
 module.exports = nextConfig

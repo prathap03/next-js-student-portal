@@ -14,7 +14,6 @@ import {
     ShoppingCartIcon
 } from '@heroicons/react/outline';
 import HeaderIcon from './HeaderIcon';
-import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useAuth } from "../context/AuthContext";
 const Header = () => {
