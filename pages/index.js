@@ -21,7 +21,7 @@ export default function Home({ session }) {
   )
   return (
 
-    <div className="h-screen overflow-x-hidden bg-gray-100">
+    <div className="w-screen h-screen overflow-x-hidden bg-gray-100">
       <Head>
       
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -39,17 +39,17 @@ export default function Home({ session }) {
         <Header />
         <div className='flex gap-2 h-[calc(100vh_-_81px)]'>
         <NavBar/>
-        <div className='flex flex-col justify-center flex-shrink gap-10 p-10 '>
-            <div className='p-8    shadow-xl  h-[23.2rem] rounded-xl bg-[#F8F5F5]'>
+        <div className='flex flex-col justify-center flex-shrink gap-10 p-10 w-[calc(94vw-319px)]'>
+            <div className='p-8  flex-shrink   shadow-xl rounded-xl bg-[#F8F5F5]'>
                 <h1 className='font-normal font-sans text-[2rem]'>Certifications</h1>
-                <div className="flex justify-start gap-10 mt-5 no-wrap md:grid-cols-3">
-            <Link href="/StudentCertificate" as="StudentCertificate"><Cards title="Students Certification" src="https://cdn.searchenginejournal.com/wp-content/uploads/2021/12/google-career-certificates-61bd445f96b29-sej-760x400.png"  /></Link>
-            <Link href="/Awards"><Cards title="Awards and Rewards" src="https://cdn.pixabay.com/photo/2016/09/16/19/20/trophy-1674911__340.png" /></Link>
-            <Link href="/Workshops"><Cards title="Workshops" src="https://cdn.pixabay.com/photo/2018/08/29/09/12/business-3639451__340.jpg" /></Link>
+                <div className="flex justify-start flex-shrink gap-10 mt-5 md:grid-cols-3">
+            <Link href="/StudentCertificate" as="StudentCertificate"><Cards className="flex-shrink" title="Students Certification" src="https://cdn.searchenginejournal.com/wp-content/uploads/2021/12/google-career-certificates-61bd445f96b29-sej-760x400.png"  /></Link>
+            <Link href="/Awards"><Cards title="Awards and Rewards" className="flex-shrink " src="https://cdn.pixabay.com/photo/2016/09/16/19/20/trophy-1674911__340.png" /></Link>
+            <Link href="/Workshops"><Cards title="Workshops" className="flex-shrink" src="https://cdn.pixabay.com/photo/2018/08/29/09/12/business-3639451__340.jpg" /></Link>
 
           </div>
             </div>
-            <div className='w-[76vw]  flex justify-center items-center p-20 shadow-xl h-[23.2rem] rounded-xl bg-[#F8F5F5]'>
+            <div className='w-[calc(90vw-319px)] flex-shrink  flex justify-center items-center p-20 shadow-xl h-[23.2rem] rounded-xl bg-[#F8F5F5]'>
                 
                     <button onClick={handleUpload} className='p-2 rounded-[1.2rem] w-[14vw] bg-[#66BFC5]  text-white font-bold text-[1.75rem]'>UPLOAD</button>
                 

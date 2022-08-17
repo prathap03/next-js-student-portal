@@ -11,7 +11,8 @@ const nextConfig = {
       "external.fmaa5-1.fna.fbcdn.net",
       "www.srec.ac.in",
       "cdn.searchenginejournal.com",
-      "cdn.pixabay.com"
+      "cdn.pixabay.com",
+      "firebasestorage.googleapis.com"
     ],
   },
 
