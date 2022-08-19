@@ -56,6 +56,7 @@ function Upload() {
             issueYear: issueYear,
             imgUrl:url,
             imageUuid: uuid,
+            edited:0,
             expiryMonth: expiryMonth ? expiryMonth : "nil",
             expiryYear: expiryYear ? expiryYear : "nil",
             credentialId: credentialId? credentialId : "nil",
@@ -200,8 +201,8 @@ function Upload() {
                             <h1>Type*</h1>
                             <select onChange={(e) => { setType(e.target.value) }} required className='h-10  flex-shrink-0 rounded-lg w-[100%]' name="cars" id="cars">
                                 <option style={{ padding: "12px" }} selected>Select Type..</option>
-                                <option style={{ padding: "12px" }} value="acadamic">Academic</option>
-                                <option style={{ padding: "12px" }} value="extra-curricular">Extra-Curricular</option>
+                                <option style={{ padding: "12px" }} value="academic">Academic</option>
+                                <option style={{ padding: "12px" }} value="eca">Extra-Curricular</option>
                                 <option style={{ padding: "12px" }} value="Workshop or skill">Workshop or skill</option>
                             </select>
                             <div className='flex justify-center flex-shrink-0 gap-1 mt-2'>

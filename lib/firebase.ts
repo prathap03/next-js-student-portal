@@ -3,7 +3,6 @@ import { getAuth} from "firebase/auth";
 import {getStorage} from "firebase/storage"
 import { getFirestore } from "firebase/firestore";
 
-
 const firebaseConfig = {
     apiKey: process.env.FIREBASE_API_KEY || "AIzaSyCjRgZBJKaGoimvHATCcQK5G0WAZNz1Qck",
     authDomain: "srec-portal.firebaseapp.com",
