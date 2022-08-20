@@ -4,18 +4,18 @@ import React from 'react'
 function Cards({ title, src = "https://cdn.searchenginejournal.com/wp-content/uploads/2021/12/google-career-certificates-61bd445f96b29-sej-760x400.png" }) {
     return (
         <div>
-            <div className='flex rounded-md h-[250px] overflow-hidden  justify-center bg-white w-[250px] shadow-md cursor-pointer hover:bg-blue-50 hover:shadow-xl transition-all ease-linear'>
+            <div className='flex mini:w-[5rem] mini:h-[6rem] mobile:w-[8.2rem] mobile:h-[10rem] flex-col sm:w-[11rem] sm:h-[11rem] lg:w-[15rem] lg:h-[15rem] md:w-[12rem] md:h-[12rem] rounded-md h-[250px] overflow-hidden  justify-center bg-white w-[250px] shadow-md cursor-pointer hover:bg-blue-50 hover:shadow-xl transition-all ease-linear'>
                 <div className=''>
                     <Image
                         src={src}
                         height={200}
                         width={250}
-                        layout='fixed'
+                        layout='intrinsic'
                         // objectFit='cover'
                         className='p-0'
                         alt="card"
                     />
-                    <div className='flex justify-center p-2'>
+                    <div className='flex mini:text-[0.5rem] mini:justify-start mini:p-1 mini:text-center mobile:text-center mobile:justify-center  mobile:text-[0.69rem]  sm:text-[0.7rem] justify-center p-2 lg:text-[0.9rem] md:text-[0.7rem]'>
                         {title}
 
                     </div>
