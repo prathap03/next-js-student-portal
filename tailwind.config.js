@@ -12,6 +12,7 @@ module.exports = {
       screens: {
         'mini':'300px',
         'mobile':'400px',
+        'flagship':'410px',
         'xs':'620px',
         ...defaultTheme.screens,
       
