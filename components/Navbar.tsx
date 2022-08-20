@@ -17,7 +17,7 @@ function Navbar() {
             <h1 className='text-white hover:text-blue-500 text-[1.689rem] p-2 font-normal'>Home</h1>
             </div>
             
-            <div  onClick={()=>{router.push("/")}} className='flex transition duration-100 ease-in hover:scale-105 hover:pl-2 hover:bg-[#001529]/[40%] hover:cursor-pointer'>
+            <div  onClick={()=>{router.push("/profile")}} className='flex transition duration-100 ease-in hover:scale-105 hover:pl-2 hover:bg-[#001529]/[40%] hover:cursor-pointer'>
             <AcademicCapIcon className='w-6 text-white '/>
             <h1 className='text-white hover:text-blue-500 text-[1.689rem]  p-2 font-normal'>Profile</h1>
             </div>

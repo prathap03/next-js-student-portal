@@ -340,7 +340,7 @@ export default function Workshops() {
                           </>
                         )}
                         {currentData && currentData.credentialId != "nil" && (<h1>Credential Id: {currentData.credentialId}</h1>)}
-                        {currentData && currentData.credentialURL != "nil" && (<h1>Credential URL: <a href={currentData.credentialURL}>{currentData.credentialURL}</a></h1>)}
+                        {currentData && currentData.credentialURL != "nil" && (<h1>Credential URL: <a href={"https//:"+currentData.credentialURL}>{currentData.credentialURL}</a></h1>)}
                       </div>
                     </div>
                     {currentData && currentData.edited <= 2 && (

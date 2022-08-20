@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
   images: {
     domains: [
       "links.papereact.com",
@@ -12,7 +13,8 @@ const nextConfig = {
       "www.srec.ac.in",
       "cdn.searchenginejournal.com",
       "cdn.pixabay.com",
-      "firebasestorage.googleapis.com"
+      "firebasestorage.googleapis.com",
+      "imgs.search.brave.com"
     ],
   },
 

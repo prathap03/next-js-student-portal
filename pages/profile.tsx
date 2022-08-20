@@ -1,9 +1,15 @@
 import Link from 'next/link'
 import React from 'react'
 import Header from '../components/header'
-import Head from '../node_modules/next/head'
+import Navbar from '../components/Navbar'
+import { useAuth } from '../context/AuthContext'
 
-export default function profile() {
+import Head from '../node_modules/next/head'
+import { Oval } from '../node_modules/react-loader-spinner/dist/index'
+
+
+export default function Profile() {
+    const {userDetails} = useAuth()
     return (
         <div>
                <Head>
@@ -20,104 +26,32 @@ export default function profile() {
             </title>
           </Head>
             <Header/>
-            <div className="m-[10px] p-[10px] bg-[#fff] h-screen ">
-
-                <div className="flex flex-col justify-center container-fluid">
-                    <div className="p-20 bg-gray-100 rounded-md shadow-md">
-                        <div className="panel-heading">
-                            <h3 className="panel-title">Profile</h3>
-                        </div>
-                        <div className="flex panel-body">
-                            <div className="text-center col-sm-2" id="profile-container">
-                                <img
-                                    className="w-[130px] h-[152px] rounded-[5%] mt-[4px] mb-[20px] object-cover"
-                                    src="https://cdn.pixabay.com/photo/2022/06/03/20/15/sunset-7240788__340.jpg"
-                                    id="profile-picture"
-                                    
-                                />
-                                <br />
-                                <div className="img-overlay">
-                                    <i className="fas fa-pen" id="edit" />
-                                </div>
-                            </div>
-                            <form
-                                action="/updateimage/"
-                                method="POST"
-                                id="imageForm"
-                                encType="multipart/form-data"
-                            >
-                                <input
-                                    type="hidden"
-                                    name="csrfmiddlewaretoken"
-                                    defaultValue="fRnB4dxiN6a2zKtlbzq2iEuUJhpVke3HLSmmOcLiYyQm8foWEAq8ogXWXTjhzVRy"
-                                />
-                                <input
-                                    id="imageUpload"
-                                    type="file"
-                                    name="photo"
-                                    placeholder="Change Profile Picture"
-
-                                    accept="image/jpeg"
-
-                                />
-                            </form>
-                            <div id="profiledetails" className="p-2">
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <p>Register Number: </p>
-                                    </div>
-                                    <div className="col-sm-7">
-                                        <p>2105043</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <p>Name: </p>
-                                    </div>
-                                    <div className="col-sm-7">
-                                        <p>JOE PRATHAP PJ</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <p>Batch - Department: </p>
-                                    </div>
-                                    <div className="col-sm-7">
-                                        <p>2021 - IT</p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <p>Email: </p>
-                                    </div>
-                                    <div className="col-sm-7">
-                                        <p>
-                                            srec@srec.ac.in &nbsp;&nbsp;
-                                            <Link href="/updateemail/">
-                                                <i className="fas fa-pen bullet" />
-                                            </Link>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <p>Mobile: </p>
-                                    </div>
-                                    <div className="col-sm-7">
-                                        <p>
-                                            9994303763 &nbsp;&nbsp;
-                                            <Link href="/updatemobile/">
-                                                <i className="fas fa-pen bullet" />
-                                            </Link>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-              
-                </div>
-            </div>
+            {userDetails?(
+                 <div className='flex gap-2 h-[calc(100vh_-_81px)]'>
+                 <Navbar/>
+                 <div className='flex gap-8 h-max w-[100%] p-4 m-8 rounded-lg bg-[#F8F5F5] shadow-md shadow-black/20'>
+                 {userDetails?(
+                     <>
+                    
+                     {userDetails ? (
+                          <img src={userDetails.profileUrl} className='w-[10rem] h-[12rem] object-cover rounded-lg' alt="profile"/>
+                     ):<h1>Loading...</h1>}
+                
+                 <div className='flex flex-col gap-2'>
+                 <h1>Name: {userDetails ? userDetails.name : "loading.."}</h1>
+                 <h1>Dept & Year : {userDetails ? userDetails.department+" - " + userDetails.year+"nd Year" : "loading.."} </h1>
+                 <h1>Roll No: {userDetails ? userDetails["roll no"] : "loading.."}</h1>
+                 <h1>Section: {userDetails ? userDetails.class : "loading.."}</h1>
+                 <h1>Batch: {userDetails ? userDetails.batch : "loading.."}</h1>
+                 <h1>Tutour: {userDetails ? userDetails.tutour : "loading.."}</h1>
+                 </div>
+                
+                 </>
+                 ):(<div className='flex items-center justify-center w-[100%] '><Oval/></div>)}
+                  </div>
+                 </div>
+            ):(<div className='flex items-center justify-center h-screen'><Oval/></div>)}
+           
         </div>
 
     )
