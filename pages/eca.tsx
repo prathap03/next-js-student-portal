@@ -585,7 +585,7 @@ export default function ExtraCurricular() {
 
               <hr />
 
-              <div className='flex flex-wrap items-start flex-grow p-2 m-2 overflow-scroll transition duration-150 ease-in gap-9' style={{alignContent: "flex-start"}}>
+              <div className='flex flex-wrap items-start flex-grow p-2 m-2 overflow-scroll transition duration-150 ease-in gap-7' style={{alignContent: "flex-start"}}>
 
 
                 {Data && Data.length !== 0 ? (
