@@ -43,9 +43,9 @@ export default function Home({ session }) {
 
 
 
-        <div className="hidden  h-[100%] xl:flex"><NavBar /></div>
+        <div className="hidden h-[100vh] xl:flex"><NavBar /></div>
 
-        <div className='flex flex-col justify-center flex-shrink gap-10 p-10 mini:p-2 pl-20 xl:w-[80%] md:w-max sm:w-max'>
+        <div className='flex flex-col justify-center flex-shrink gap-10 p-10 mini:p-2 pl-20 xl:w-[80%] md:w-max sm:w-max '>
           <div className='p-8 mini:p-6  flex-shrink   shadow-xl rounded-xl bg-[#F8F5F5]'>
             <h1 className='font-normal font-sans  text-[0.8rem] lg:text-[2rem] md:text-[1.5rem] sm:text-[1.2rem] mobile:text-[1.2rem]'>Certifications</h1>
             <div className="flex justify-start flex-shrink gap-10 mt-5 w-max flex-grow-col xl:justify-start md:justify-center lg:gap-20 md:gap-8">
@@ -55,9 +55,9 @@ export default function Home({ session }) {
 
             </div>
           </div>
-          <div className='sm:w-[90vw]   md:w-[90vw] flex-shrink  flex justify-center items-center p-20 shadow-xl xl:w-[100%] sm:h-[27.25rem]   rounded-xl bg-[#F8F5F5]'>
+          <div className='sm:w-[90vw]   md:w-[90vw] flex-shrink  flex justify-center items-center p-20 shadow-xl xl:w-[100%]   mb-2 rounded-xl bg-[#F8F5F5]'>
 
-            <button onClick={handleUpload} className='p-2 mini:text-[0.8rem] mini:w-1/2 sm:text-[1.1rem] md:text-[1.2rem] lg:text-[1.4rem] rounded-[1.2rem] w-[14vw] bg-[#66BFC5]  text-white font-bold text-[1.75rem]'>UPLOAD</button>
+            <button onClick={handleUpload} className='p-2 mini:text-[0.8rem] mini:w-1/2 sm:text-[1.1rem] md:w-1/3 md:text-[1.2rem] lg:text-[1.4rem] rounded-[1.2rem] w-[14vw] bg-[#66BFC5]  text-white font-bold text-[1.75rem]'>UPLOAD</button>
 
           </div>
 

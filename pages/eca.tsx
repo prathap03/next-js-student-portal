@@ -557,59 +557,63 @@ export default function ExtraCurricular() {
         </title>
       </Head>
       <Header />
-      <div className='flex flex-col gap-10  bg-[#F3F3F3]'>
-        <div className='flex h-[calc(100vh_-_81px)]'>
-          <NavBar />
-          <div className='flex flex-col gap-8 p-8'>
-            <div className='flex items-center justify-center w-[93rem] flex-shrink  p-4'>
-              <div className='flex rounded-full shadow-lg  w-[50%]'>
+      <div className='flex h-[100vh] items-start bg-[#F3F3F3]'>
+    
+      <div className='hidden h-[100vh]  xl:flex'>
+         <NavBar  />
+      </div>
+      <div className='flex flex-col justify-center flex-shrink gap-10 p-10 mini:p-2 pl-20 xl:w-[80%]  md:w-max sm:w-max '>
+            <div className='flex items-center justify-center flex-shrink p-4 mt-8 md:w-[77vw]'>
+              <div className='flex w-[100%] md:w-[60%] rounded-full shadow-lg'>
                 <SearchIcon className='p-2 rounded-l-full stroke-[#777777] h-[2.8rem] bg-white   w-11' />
                 <input placeholder='Search...' onEmptied={() => { setSearch(null) }} onInput={(e) => { handleChange(e) }} className='h-[2.8rem] w-[100%] placeholder:text-[1.4rem] placeholder:font-normal outline-none focus:outline-none rounded-r-full  '></input>
               </div>
             </div>
-            <div className='flex flex-col w-[93rem] gap-2 flex-grow  rounded-lg shadow-xl  bg-[#F8F5F5]'>
+            <div className='flex flex-col w-[90vw] md:w-[73vw] h-[68vh] m-4 gap-2 flex-grow  rounded-lg shadow-xl   bg-[#F8F5F5]'>
               <div className='flex justify-between mt-4 ml-4 mr-4'>
-                <h1 className='text-[2rem] font-semibold'>Extra-Curricular</h1>
+                <h1 className='text-[1rem] font-semibold'>Extra-Curricular </h1>
                 <div className='flex flex-col'>
-                  <select className="h-10 p-2 text-[1.1rem] text-white font-semibold bg-blue-500 rounded-full w-22" >
+                  <select className="h-8 p-2 text-[0.7rem] text-white font-semibold bg-blue-500 rounded-full w-22" >
                     <option value="" disabled selected>Sort</option>
                     <option value="ascending">Newer</option>
                     <option value="descending">Older</option>
                   </select>
                 </div>
 
-             
+
               </div>
 
-<hr />
+              <hr />
 
-<div className='flex flex-wrap flex-grow gap-10 p-4 m-2'>
-
-
-{Data && Data.length!==0?(
-          Data.map((data)=>{
-            return (
-              <div key={data.name} onClick={() => { openModal(data.imgUrl, data) }}>
-
-              <CertificateCard data={data} />
-            </div>
-            )
-          })
-          ) :!Data ?(<div className='flex w-[100%] items-center justify-center '><Oval/></div>): <h1>No Data Found</h1>}
-
-         
-                   
-        
+              <div className='flex flex-wrap items-start flex-grow p-2 m-2 overflow-scroll transition duration-150 ease-in gap-9' style={{alignContent: "flex-start"}}>
 
 
-</div>
+                {Data && Data.length !== 0 ? (
+                  Data.map((data) => {
+                    return (
+
+                      <div className='items-start transition duration-150 ease-in h-max' key={data.name} onClick={() => { openModal(data.imgUrl, data) }}>
+
+                        <CertificateCard data={data} />
+                      </div>
+                    )
+                  })
+                ) : !Data ? (<div className='flex w-[100%] items-center justify-center '><Oval /></div>) : <h1>No Data Found</h1>
+
+                }
+
+
+
+
+
+
+              </div>
 
 
             </div>
 
           </div>
         </div>
-      </div>
 
 
 
