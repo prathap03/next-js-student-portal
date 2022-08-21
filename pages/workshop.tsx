@@ -607,7 +607,7 @@ export default function Workshops() {
 
               <hr />
 
-              <div className='flex flex-wrap items-start flex-grow p-2 m-2 overflow-scroll transition duration-150 ease-in gap-7 ' style={{alignContent: "flex-start"}}>
+              <div className='flex flex-wrap items-start flex-grow gap-4 p-2 m-2 overflow-scroll transition duration-150 ease-in ' style={{alignContent: "flex-start"}}>
 
 
                 {Data && Data.length !== 0 ? (
