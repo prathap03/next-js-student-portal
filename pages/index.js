@@ -56,7 +56,7 @@ export default function Home({ session }) {
             </div>
           </div>
           <div className='sm:w-[90vw]   md:w-[90vw] flex-shrink  flex justify-center items-center p-20 shadow-xl xl:w-[100%]   mb-2 rounded-xl bg-[#F8F5F5]'>
-
+          
             <button onClick={handleUpload} className='p-2 mini:text-[0.8rem] mini:w-1/2 sm:text-[1.1rem] md:w-1/3 md:text-[1.2rem] lg:text-[1.4rem] rounded-[1.2rem] w-[14vw] bg-[#66BFC5]  text-white font-bold text-[1.75rem]'>UPLOAD</button>
 
           </div>
