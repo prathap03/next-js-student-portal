@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import { fireStore, storage } from '../lib/firebase';
+import { onSnapshot, collection, query, doc, where, deleteDoc, setDoc, updateDoc, serverTimestamp } from "firebase/firestore";
 function Treat() {
 
     const [Budget,setBudget] = useState(75)
@@ -7,6 +8,48 @@ function Treat() {
     const [MainDish,setMainDish] = useState(null);
     const [UserId,setUserId] = useState(null);
     const [Count,setCount] = useState(0);
+    const [Spl,setSpl] = useState(null);
+    const [Auth,setAuth] = useState(null);
+    const food = {
+        "Chicken Noodles":60,
+        "Chicken Fried Rice":60,
+        "Chicken Biryani":60,
+        "Plain Biryani":40,
+        "Chappathi":40,
+        "Parotta":40,
+        "Romali Roti":60
+    }
+    const [Prev,setPrev] = useState(null);
+
+    const checkUser = (uid)=>{
+        const unsub = onSnapshot(doc(fireStore, `treat/invited`), (doc) => {
+           
+            if(doc.data()){
+            console.log(doc.data().userId)
+            if(doc.data().userId.includes(uid)){
+                console.log("Invited guest")
+                setAuth(true);
+                setUserId(uid);
+            }else{
+                setAuth(false)
+            }
+            }
+        });
+    }   
+
+    const addMain = (dish)=>{
+        if(dish!="default"){
+            setMainDish(dish)
+            if(Prev){
+                setBudget(food[Prev]+Budget-food[dish]);
+                setPrev(dish);
+                return;
+            }
+            setBudget(Budget-food[dish])
+            setPrev(dish)
+        }
+    }
+
     const addDrink = (drink)=>{
         setDrinks(drink)
         if(drink!='None' && drink!="default"){
@@ -20,8 +63,47 @@ function Treat() {
             setBudget(Budget+15)
             setCount(0)
         }
-        
     }
+
+    const addToDB = async () => {
+        if(UserId && MainDish && Drinks){
+            // create a pointer to our Document
+            const unsub = onSnapshot(doc(fireStore, `treat/${UserId}`),async (docs) => {
+           
+                if(docs.data()){
+                console.log(docs.data())
+            window.alert("You Have Already Registered")
+
+                    return
+                }else{
+                    const data = doc(fireStore, `treat/${UserId}`);
+        // structure the todo data
+        const certificateData = {
+            UserId:UserId,
+            RemainingBudget:Budget,
+            MainDish:MainDish,
+            CoolDrinks:Drinks,
+            Spl:Spl
+           
+        };
+        try {
+            //add the Document
+            await setDoc(data, certificateData);
+            //show a success message
+            window.alert("Reserved")
+            //reset fields
+        } catch (error) {
+            //show an error message
+            console.log(error)
+        }
+        }
+                
+                
+            });
+        
+        }
+    };
+
 
   return (
     <div className='flex items-center justify-center w-screen h-screen bg-gradient-to-r from-cyan-500 to-blue-500'>
@@ -34,14 +116,19 @@ function Treat() {
             </div>
             <div className='flex flex-col gap-2'>
                 <h1>User ID</h1>
-                <input className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
+                {Auth?(
+                    <input onBlur={(e)=>checkUser(e.target.value)}  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-green-500 ring-green-500 ring-2'/>
+                ):Auth==null?(
+                    <input onBlur={(e)=>checkUser(e.target.value)}  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
+                ):
+                (<input onBlur={(e)=>checkUser(e.target.value)}  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none ring-red-500 ring-2'/>)}
             </div>
             <div className='flex flex-col gap-2'>
             <h1>Main Dish</h1>
-                            <select onChange={(e) => {()=>console.log(e.target.value) }} required className='bg-red-200/[55%] text-[0.8rem] rounded-full h-[2.2rem] shadow-md p-2 outline-none' name="cars" id="cars">
-                                <option style={{ padding: "12px" }} selected>Select Dish..</option>
+                            <select onChange={(e) => {addMain(e.target.value)}} required className='bg-red-200/[55%] text-[0.8rem] rounded-full h-[2.2rem] shadow-md p-2 outline-none' name="cars" id="cars">
+                                <option style={{ padding: "12px" }} value="default" selected>Select Dish..</option>
                                 <option style={{ padding: "12px" }} value="Chicken Noodles">Ckn. Noodles</option>
-                                <option style={{ padding: "12px" }} value="Chicken Fried Rice">Ckn.Fried Rice</option>
+                                <option style={{ padding: "12px" }} value="Chicken Fried Rice">Ckn. Fried Rice</option>
                                 <option style={{ padding: "12px" }} value="Chicken Biryani">Ckn. Biryani</option>
                                 <option style={{ padding: "12px" }} value="Plain Biryani">Plain Biryani</option>
                                 <option style={{ padding: "12px" }} value="Parotta">Parotta</option>
@@ -66,12 +153,12 @@ function Treat() {
             {Drinks == "None" && (
                 <div className='flex flex-col gap-2'>
                 <h1>Spl. Additionals</h1>
-                <input placeholder='As per remaining budget' className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
+                <input onChange={(e)=>setSpl(e.target.value)} placeholder='As per remaining budget' className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
                 </div>
             )}
 
 <div className='flex justify-center'>
-           <input type="button" value="Register" className='p-2 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 w-[50%] rounded-full  m-2' />
+           <input type="button" onClick={()=>addToDB()} value="Register" className='p-2 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 w-[50%] rounded-full  m-2' />
             </div>
         </div>
 
