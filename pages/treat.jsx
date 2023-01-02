@@ -10,6 +10,7 @@ function Treat() {
     const [Count,setCount] = useState(0);
     const [Spl,setSpl] = useState(null);
     const [Auth,setAuth] = useState(null);
+    const [Name,setName] = useState(null);
     const food = {
         "Chicken Noodles":60,
         "Chicken Fried Rice":60,
@@ -59,7 +60,7 @@ function Treat() {
                 setCount(1);
             }
         }
-        if(drink=='None' && (Budget+15<=75)){
+        if(drink=='None' && (Budget+15<=75) && Drinks){
             setBudget(Budget+15)
             setCount(0)
         }
@@ -68,18 +69,24 @@ function Treat() {
     const addToDB = async () => {
         if(UserId && MainDish && Drinks){
             // create a pointer to our Document
-            const unsub = onSnapshot(doc(fireStore, `treat/${UserId}`),async (docs) => {
+            const unsub = onSnapshot(doc(fireStore, `treat/User/Orders/${UserId}`),async (docs) => {
            
                 if(docs.data()){
-                console.log(docs.data())
+                    console.log(docs.data())
+                   
+                        console.log(docs.data())
             window.alert("You Have Already Registered")
+            return
+                    
 
-                    return
-                }else{
-                    const data = doc(fireStore, `treat/${UserId}`);
+                    
+                }
+                else{
+                    const data = doc(fireStore, `treat/User/Orders/${UserId}`);
         // structure the todo data
         const certificateData = {
             UserId:UserId,
+            Name:Name,
             RemainingBudget:Budget,
             MainDish:MainDish,
             CoolDrinks:Drinks,
@@ -91,6 +98,10 @@ function Treat() {
             await setDoc(data, certificateData);
             //show a success message
             window.alert("Reserved")
+            setUserId(null);
+            setSpl(null);
+            setMainDish(null);
+            location.reload();
             //reset fields
         } catch (error) {
             //show an error message
@@ -123,6 +134,10 @@ function Treat() {
                 ):
                 (<input onBlur={(e)=>checkUser(e.target.value)}  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none ring-red-500 ring-2'/>)}
             </div>
+            <div className='flex flex-col gap-2'>
+                <h1>Name</h1>
+                <input onChange={(e)=>setName(e.target.value)} placeholder='As per remaining budget' className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
+                </div>
             <div className='flex flex-col gap-2'>
             <h1>Main Dish</h1>
                             <select onChange={(e) => {addMain(e.target.value)}} required className='bg-red-200/[55%] text-[0.8rem] rounded-full h-[2.2rem] shadow-md p-2 outline-none' name="cars" id="cars">

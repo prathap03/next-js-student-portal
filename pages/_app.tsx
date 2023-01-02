@@ -7,7 +7,7 @@ import ProtectedRoute from '../components/ProtectedRoute';
 
 function MyApp({ Component, pageProps }: AppProps) {
   
-  const publicRoutes = ['/login','/demoDash','/treat']
+  const publicRoutes = ['/login','/demoDash','/treat','/orders']
   const router = useRouter()
   return (
     <AuthContextProvider>
