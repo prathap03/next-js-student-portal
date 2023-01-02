@@ -79,4 +79,4 @@ function Treat() {
   )
 }
 
-export default treat
+export default Treat
