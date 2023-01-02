@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 
-function treat() {
+function Treat() {
 
-    const [budget,setBudget] = useState(75)
-    const [drinks,setDrinks] = useState(null);
-    const [mainDish,setMainDish] = useState(null);
-    const [userId,setUserId] = useState(null);
-    const [count,setCount] = useState(0);
+    const [Budget,setBudget] = useState(75)
+    const [Drinks,setDrinks] = useState(null);
+    const [MainDish,setMainDish] = useState(null);
+    const [UserId,setUserId] = useState(null);
+    const [Count,setCount] = useState(0);
     const addDrink = (drink)=>{
         setDrinks(drink)
         if(drink!='None' && drink!="default"){
            
-            if(count<1){
-                setBudget(budget-15)
+            if(Count<1){
+                setBudget(Budget-15)
                 setCount(1);
             }
         }
-        if(drink=='None' && (budget+15<=75)){
-            setBudget(budget+15)
+        if(drink=='None' && (Budget+15<=75)){
+            setBudget(Budget+15)
             setCount(0)
         }
         
@@ -30,7 +30,7 @@ function treat() {
                 Order Form
             </div>
             <div className='flex justify-center p-2 bg-red-200/[35%] rounded-sm shadow-sm'>
-                <h1>Remaining Budget: &#8377; {budget} </h1>
+                <h1>Remaining Budget: &#8377; {Budget} </h1>
             </div>
             <div className='flex flex-col gap-2'>
                 <h1>User ID</h1>
@@ -63,7 +63,7 @@ function treat() {
 
                             </select>
             </div>
-            {drinks == "None" && (
+            {Drinks == "None" && (
                 <div className='flex flex-col gap-2'>
                 <h1>Spl. Additionals</h1>
                 <input placeholder='As per remaining budget' className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
