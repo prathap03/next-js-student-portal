@@ -84,10 +84,10 @@ Approved by AICTE, permanently Affiliated to Anna University, Chennai.</p>
             <h1 className="font-medium text-[#9C7878] mt-4 text-[1.4rem]">Welcome, Sign in to continue</h1>
             <div className="flex flex-col justify-start w-3/4 mt-6 space-y-10">
                 <div className="relative">
-                <input value={email} onChange={(event)=>{setEmail(event.target.value)}} className="block h-[3.8rem] text-[1.25rem]  w-full placeholder:text-[D9D9D9] placeholder:text-[1.25rem] p-2 rounded-full shadow-mds focus:outline-none" style={{padding:"20px"}} type="text" placeholder="Email" required/>
-                <h1 className="absolute top-[0.8rem] font-semibold text-[1.25rem] right-6">@srec.ac.in</h1>
+                <input name="rollNo" value={email} onChange={(event)=>{setEmail(event.target.value)}} className="block h-[3.8rem] text-[1.25rem]  w-full placeholder:text-[D9D9D9] placeholder:text-[1.25rem] p-2 rounded-full shadow-mds focus:outline-none" style={{padding:"20px"}} type="text" placeholder="Email" required/>
+                <h1  className="absolute top-[0.8rem] font-semibold text-[1.25rem] right-6">@srec.ac.in</h1>
                 </div>
-                <input value={password} onChange={(event)=>{setPassword(event.target.value)}}  className="p-2 h-[3.8rem] text-[1.25rem] placeholder:text-[D9D9D9] placeholder:text-[1.25rem] rounded-full shadow-md  focus:outline-none" style={{padding:"20px"}} type="password" placeholder="Password" required/>
+                <input name="password" value={password} onChange={(event)=>{setPassword(event.target.value)}}  className="p-2 h-[3.8rem] text-[1.25rem] placeholder:text-[D9D9D9] placeholder:text-[1.25rem] rounded-full shadow-md  focus:outline-none" style={{padding:"20px"}} type="password" placeholder="Password" required/>
             </div>
             <button type="submit" className="p-2  w-1/2 rounded-full h-[4rem]  m-6 font-bold text-white bg-[#00BDC9] text-[1.5rem]">LOGIN</button>
         </div>

@@ -5,11 +5,12 @@ import { useRouter } from '../node_modules/next/router'
 
 
 
+
 function Navbar() {
     const {user,logout} = useAuth() 
     const router = useRouter()
   return (
-    <div className='w-[22.95rem]  flex-shrink-0 rounded-r-2xl rounded-br-md shadow-2xl shadow-black/70   bg-[#001529]/[84%]'>
+    <div className='w-[22.95rem]   flex-shrink-0 rounded-r-2xl rounded-br-md shadow-2xl shadow-black/70   bg-[#001529]/[84%]'>
         <div className='flex flex-col justify-start  mt-2 divide-y divide-[#636363] '>
             <h1 className='text-white text-[1.689rem] p-2 font-light'>Welcome, <span className='transition duration-150 hover:text-blue-500'>{user.email.split(".")[0][0].toUpperCase()+user.email.split(".")[0].slice(1)}</span> </h1>
             <div className='flex transition duration-100  ease-in hover:scale-105 hover:pl-2 hover:bg-[#001529]/[40%] hover:cursor-pointer' onClick={()=>{router.push("/")}}>
