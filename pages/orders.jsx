@@ -40,11 +40,11 @@ function Orders() {
         }
       }, [])
   return (
-    <div className='flex w-screen h-screen bg-gradient-to-r from-cyan-500 to-blue-500'>
-    <div className='flex flex-col gap-2 m-2'>
+    <div className='flex w-screen min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500'>
+    <div className='flex flex-wrap justify-center flex-grow gap-2 m-2 md:justify-start md:flex-col'>
     {Orders && Orders.map((o)=>{
         return(
-            <div className='p-4 bg-red-500/[50%]  rounded-md shadow-xl h-max backdrop-blur-md'>
+            <div className='p-4 bg-red-500/[50%] md:w-[20%] w-[70%]  rounded-xl shadow-xl h-max backdrop-blur-md'>
             <h1>UserId: {o.UserId}</h1>
             <h1 className='font-semibold '>Name: {o.Name}</h1>
             <h1>Main Dish: {o.MainDish}</h1>

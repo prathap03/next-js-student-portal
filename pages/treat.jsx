@@ -136,7 +136,7 @@ function Treat() {
             </div>
             <div className='flex flex-col gap-2'>
                 <h1>Name</h1>
-                <input onChange={(e)=>setName(e.target.value)} placeholder='As per remaining budget' className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
+                <input onChange={(e)=>setName(e.target.value)} placeholder='Name' className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
                 </div>
             <div className='flex flex-col gap-2'>
             <h1>Main Dish</h1>
