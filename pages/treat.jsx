@@ -129,11 +129,11 @@ function Treat() {
             <div className='flex flex-col gap-2'>
                 <h1>User ID</h1>
                 {Auth?(
-                    <input onBlur={(e)=>checkUser(e.target.value)}  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-green-500 ring-green-500 ring-2'/>
+                    <input onBlur={(e)=>checkUser(e.target.value)} placeholder='Roll No'  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-green-500 ring-green-500 ring-2'/>
                 ):Auth==null?(
-                    <input onBlur={(e)=>checkUser(e.target.value)}  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
+                    <input onBlur={(e)=>checkUser(e.target.value)} placeholder='Roll No'  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none'/>
                 ):
-                (<input onBlur={(e)=>checkUser(e.target.value)}  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none ring-red-500 ring-2'/>)}
+                (<input onBlur={(e)=>checkUser(e.target.value)} placeholder='Roll No'  className='bg-red-200/[55%] rounded-full h-[2.2rem] text-[0.8rem] shadow-md p-2 outline-none ring-red-500 ring-2'/>)}
             </div>
             <div className='flex flex-col gap-2'>
                 <h1>Name</h1>
