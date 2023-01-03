@@ -18,7 +18,8 @@ function Treat() {
         "Plain Biryani":40,
         "Chappathi":40,
         "Parotta":40,
-        "Romali Roti":60
+        "Romali Roti":60,
+        "Kothu Parotta":40
     }
     const [Prev,setPrev] = useState(null);
 
@@ -146,6 +147,8 @@ function Treat() {
                                 <option style={{ padding: "12px" }} value="Chicken Fried Rice">Ckn. Fried Rice</option>
                                 <option style={{ padding: "12px" }} value="Chicken Biryani">Ckn. Biryani</option>
                                 <option style={{ padding: "12px" }} value="Plain Biryani">Plain Biryani</option>
+                                <option style={{ padding: "12px" }} value="Kothu Parotta">Kothu Parotta</option>
+
                                 <option style={{ padding: "12px" }} value="Parotta">Parotta</option>
                                 <option style={{ padding: "12px" }} value="Chappathi">Chappathi</option>
                                 <option style={{ padding: "12px" }} value="Romali Roti">Romail Roti</option>
@@ -162,6 +165,8 @@ function Treat() {
                                 <option style={{ padding: "12px" }} value="Pepsi without ice">Pepsi without ice</option>
                                 <option style={{ padding: "12px" }} value="Mirinda">Mirinda</option>
                                 <option style={{ padding: "12px" }} value="Mirinda without ice">Mirinda without Ice</option>
+                                <option style={{ padding: "12px" }} value="Slice">Slice</option>
+                                <option style={{ padding: "12px" }} value="Slice without ice">Slice without Ice</option>
 
                             </select>
             </div>

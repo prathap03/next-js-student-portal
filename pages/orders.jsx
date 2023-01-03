@@ -41,7 +41,7 @@ function Orders() {
       }, [])
   return (
     <div className='flex w-screen min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500'>
-    <div className='flex flex-wrap justify-center flex-grow gap-2 m-2 md:justify-start md:flex-col'>
+    <div className='flex flex-col items-center flex-grow gap-2 m-2 md:justify-start md:items-start md:flex-col'>
     {Orders && Orders.map((o)=>{
         return(
             <div key={o.UserId} className='p-4 bg-red-500/[50%] md:w-[20%] w-[70%]  rounded-xl shadow-xl h-max backdrop-blur-md'>
