@@ -40,7 +40,7 @@ function Nfc() {
     ndef.onreading = event => {
         const message = event.message;
         for (const record of message.records) {
-        SetTag(record);
+        SetTagData(record);
           console.log("Record type:  " + record.recordType);
           console.log("MIME type:    " + record.mediaType);
           console.log("Record id:    " + record.id);
