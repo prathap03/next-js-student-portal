@@ -7,6 +7,9 @@ function Nfc() {
 
   
   const readTag = async()=>{
+
+
+
     console.log("User clicked scan button");
 
     if ('NDEFReader' in window){
@@ -61,15 +64,17 @@ function Nfc() {
   }
   }
 
+  
+
   return (
     <div className='flex flex-col items-center justify-center min-h-screen gap-2 h-max bg-red'>
         {tagData && tagData.length>0 && tagData.map((data,idx)=>{
             return(
-                <h1 key={idx}>JSON.stringify(data)</h1>
+                <h1 key={idx}>{JSON.stringify(data)}</h1>
             )
         })}
         <pre>{tag}</pre>
-        <button onClick={()=>{readTag()}} className='p-2 text-white bg-green-500 rounded-md shadow-md'>READ NFC</button>
+        <button id='scanButton' onClick={()=>{readTag()}} className='p-2 text-white bg-green-500 rounded-md shadow-md'>READ NFC</button>
 
     </div>
   )
