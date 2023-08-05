@@ -17,7 +17,6 @@ const nextConfig = {
       "imgs.search.brave.com"
     ],
   },
-
 }
 
 
