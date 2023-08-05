@@ -85,7 +85,7 @@ function Orders() {
         return () => {
           unsubscribe()
         }
-      }, [])
+      }, [Food])
 
      
 
@@ -100,12 +100,12 @@ function Orders() {
 
           let color= Colors[Math.floor(Math.random() * Colors.length)];
         return(
-            <div className={`flex w-[80%] flex-col p-2 bg-${color}-600  rounded-md shadow-sm `}>
+            <div key={food.name} className={`flex w-[80%] flex-col p-2 bg-${color}-600  rounded-md shadow-sm `}>
             <h1>{food.name}</h1>
             <h1>{food.count}</h1>
            {food.orderedBy.map((names)=>{
             return(
-                <h1>{names}</h1>
+                <h1 key={food.name}>{names}</h1>
             )
            })}
 

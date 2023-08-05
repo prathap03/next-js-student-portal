@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function nfc() {
+function Nfc() {
 
   const [tag,SetTag] = useState("") 
 
@@ -47,4 +47,4 @@ function nfc() {
   )
 }
 
-export default nfc
+export default Nfc
