@@ -41,6 +41,7 @@ function Nfc() {
         const message = event.message;
         for (const record of message.records) {
         SetTagData(record);
+        console.log(tagData);
           console.log("Record type:  " + record.recordType);
           console.log("MIME type:    " + record.mediaType);
           console.log("Record id:    " + record.id);
