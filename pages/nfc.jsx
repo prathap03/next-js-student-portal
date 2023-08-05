@@ -69,7 +69,7 @@ function Nfc() {
   return (
     <div className='flex flex-col items-center justify-center min-h-screen gap-2 h-max bg-red'>
         
-        {tagData && tagData.map((data,idx)=>{
+        {tagData && tagData.length>0 && tagData.map((data,idx)=>{
             console.log(tagData)
             return(
                 <h1 key={idx}>{JSON.stringify(data)}</h1>
