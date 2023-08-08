@@ -32,7 +32,7 @@ function Treat() {
                 setAuth(true);
                 setUserId(uid);
             }else{
-                setAuth(false)
+                setAuth(true);
             }
             }
         });
