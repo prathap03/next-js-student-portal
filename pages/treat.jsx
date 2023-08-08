@@ -18,7 +18,6 @@ function Treat() {
         "Plain Biryani":40,
         "Chappathi":40,
         "Parotta":40,
-        "Romali Roti":60,
         "Kothu Parotta":40
     }
     const [Prev,setPrev] = useState(null);
