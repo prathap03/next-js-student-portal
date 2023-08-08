@@ -149,9 +149,7 @@ function Treat() {
                                 <option style={{ padding: "12px" }} value="Kothu Parotta">Kothu Parotta</option>
 
                                 <option style={{ padding: "12px" }} value="Parotta">Parotta</option>
-                                <option style={{ padding: "12px" }} value="Chappathi">Chappathi</option>
-                                <option style={{ padding: "12px" }} value="Romali Roti">Romail Roti</option>
-                            </select>
+                                <option style={{ padding: "12px" }} value="Chappathi">Chappathi</option>                     </select>
             </div>
             <div className='flex flex-col gap-2'>
             <h1>Cool Drinks</h1>
