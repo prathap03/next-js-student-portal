@@ -9,7 +9,7 @@ const ProtectedRoute = ({children}:{children:React.ReactNode}) => {
     const router = useRouter()
 
     useEffect(()=>{
-        if(!user){
+        if(!user ){
             router.push({
                 pathname: '/login',
                 query: { from: router.pathname },
