@@ -18,7 +18,6 @@ function Treat() {
         "Plain Biryani":40,
         "Chappathi":40,
         "Parotta":40,
-        "Romali Roti":60,
         "Kothu Parotta":40
     }
     const [Prev,setPrev] = useState(null);
@@ -33,7 +32,8 @@ function Treat() {
                 setAuth(true);
                 setUserId(uid);
             }else{
-                setAuth(false)
+                setAuth(true);
+                setUserId(uid);
             }
             }
         });
@@ -150,9 +150,7 @@ function Treat() {
                                 <option style={{ padding: "12px" }} value="Kothu Parotta">Kothu Parotta</option>
 
                                 <option style={{ padding: "12px" }} value="Parotta">Parotta</option>
-                                <option style={{ padding: "12px" }} value="Chappathi">Chappathi</option>
-                                <option style={{ padding: "12px" }} value="Romali Roti">Romail Roti</option>
-                            </select>
+                                <option style={{ padding: "12px" }} value="Chappathi">Chappathi</option>                     </select>
             </div>
             <div className='flex flex-col gap-2'>
             <h1>Cool Drinks</h1>
