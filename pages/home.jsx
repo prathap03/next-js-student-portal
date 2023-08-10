@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { collection, collectionGroup, doc, getDoc, getDocs, onSnapshot } from "firebase/firestore";
 import { fireStore, storage } from '../lib/firebase';
+import { BsFillPersonFill } from 'react-icons/bs';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Home() {
 
@@ -163,7 +165,7 @@ function Home() {
     console.log(enrolledCourses)
     
   return (
-    <div className=' bg-[#171717] h-screen overflow-scroll min-h-screen flex flex-col'>
+    <div className=' bg-[#171717] h-screen overflow-scroll min-h-screen flex relative flex-col'>
         <div className='flex flex-col'>
             <div className='overflow-y-scroll no-scrollbar gap-4 flex-shrink-0 p-2 justify-between flex flex-row w-full h-[5rem] mt-[2rem]'>
                 <div className='flex flex-col items-center justify-center p-4 text-black rounded-full font-bold bg-[#737373]'>
@@ -311,6 +313,12 @@ function Home() {
 
             </div>
 
+        </div>
+        <div className='fixed bottom-[5%] inset-x-0 flex gap-2 shadow-md backdrop:blur-md bg-black/[40%] text-white p-4 justify-around items-center w-[55vw] rounded-[0.813rem]  mx-auto'>
+          
+        <Image src="/user.svg" height='33px'  width='33px' />
+            <Image src="/rocket.svg" height='33px' width='33px' />
+            
         </div>
     </div>
   )
