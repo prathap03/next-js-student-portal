@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { collection, doc, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, collectionGroup, doc, getDoc, getDocs, onSnapshot } from "firebase/firestore";
 import { fireStore, storage } from '../lib/firebase';
 import Link from 'next/link';
 
@@ -17,6 +17,24 @@ function Home() {
             console.log(subjects)
         })
     }
+
+    function areTimestampsEqualIgnoringTime(timestamp1Seconds) {
+        const timestamp1Milliseconds = timestamp1Seconds * 1000; // Convert to milliseconds
+        const timestamp2Milliseconds = new Date().getTime(); // Convert to milliseconds
+        
+        const date1 = new Date(timestamp1Milliseconds);
+        const date2 = new Date(timestamp2Milliseconds);
+        
+        const year1 = date1.getFullYear();
+        const month1 = date1.getMonth();
+        const day1 = date1.getDate();
+        
+        const year2 = date2.getFullYear();
+        const month2 = date2.getMonth();
+        const day2 = date2.getDate();
+      
+        return year1 === year2 && month1 === month2 && day1 === day2;
+      }
     
     function timestampToTimeOfDay(timestamp) {
         const date = new Date(timestamp*1000);
@@ -38,22 +56,111 @@ function Home() {
       
  
 
-    useEffect(  () => {
-        
-        const unsub = onSnapshot(doc(fireStore, "nfc/attendance/subjects/20EC2990"), (doc) => {
-            console.log("Current data: ", doc.data());
-            setSubjects([doc.data()])
-        });
-        // if (number==98) return;
-        // setNumber(number+1) 
-        fetchSubjects()
+    // useEffect(  () => {
 
-        return unsub;
+    //     const userRef = doc(fireStore,'Users','2105043');
+    //     const enrolledCoursesRef = collection(userRef,'EnrolledCourses');
+     
+        
+    //     const fetchEnrolledCourses = async ()=>{
+    //         try{
+    //             const enrolledCoursesSnapshot = await getDocs(enrolledCoursesRef);
+    //             const enrolledCourseIds = enrolledCoursesSnapshot.docs.map(doc=> doc.id);
+
+    //             enrolledCourseIds.forEach(async courseId =>{
+    //                 const attendanceRef = collection(fireStore,'Courses',courseId,'Attendance');
+    //                 const coursesRef = doc(fireStore,'Courses',courseId);
+    //                 let enrolledCourses = []
+    //                 getDoc(coursesRef).then((courseSnapshot)=>{
+    //                     if(courseSnapshot.exists()){
+    //                         const courseData = courseSnapshot.data();
+    //                         enrolledCourses.push(courseData);
+    //                         // console.log(courseData)
+    //                     }
+    //                 })
+    //                 console.log(enrolledCourses)
+    //                 const userAttendanceDoc = doc(attendanceRef,'2105043');
+    //                 const userAttendanceSnapshot = await getDoc(userAttendanceDoc);
+
+    //                 if(userAttendanceSnapshot.exists()){
+    //                     const attendanceData = userAttendanceSnapshot.data();
+    //                     const attendanceDates = attendanceData.dates || [];
+    //                     console.log(attendanceData);
+    //                 }
+
+    //             })
+    //         }catch(error){
+
+    //         }
+    //     }
+    //     fetchEnrolledCourses();
+
+
+
+        
             
       
     
      
-    }, [])
+    // }, [2105043])
+
+    const userId = '2105043';
+
+    const [enrolledCourses, setEnrolledCourses] = useState([]);
+
+    useEffect(() => {
+      const userRef = doc(fireStore, 'Users', userId);
+      const enrolledCoursesRef = collection(userRef, 'EnrolledCourses');
+  
+      const unsubscribe = onSnapshot(enrolledCoursesRef, (querySnapshot) => {
+        const courses = [];
+        querySnapshot.forEach(enrolledCourseDoc => {
+          const courseId = enrolledCourseDoc.id;
+          const courseRef = doc(fireStore, 'Courses', courseId);
+  
+          onSnapshot(courseRef, (courseSnapshot) => {
+            if (courseSnapshot.exists()) {
+              const courseData = courseSnapshot.data();
+
+     // Include attendance data from user's document
+     const userAttendanceRef = doc(courseRef, 'Attendance', userId);
+     onSnapshot(userAttendanceRef, (attendanceSnapshot) => {
+       if (attendanceSnapshot.exists()) {
+         const attendanceData = attendanceSnapshot.data();
+         const courseWithAttendance = { id: courseId, ...courseData,attendance:attendanceData };
+         
+         // Check if the course already exists in the courses array
+         const existingCourseIndex = courses.findIndex(course => course.id === courseId);
+         if (existingCourseIndex === -1) {
+           courses.push(courseWithAttendance);
+           setEnrolledCourses(courses);
+         } else {
+           // Update the existing course data
+           courses[existingCourseIndex] = courseWithAttendance;
+           setEnrolledCourses([...courses]);
+         }
+        }})
+        console.log(courses)
+
+  
+              // Handle course data
+              // Update UI or perform other actions
+              // ...
+            }
+          }, error => {
+            // Handle errors
+          });
+        });
+      }, error => {
+        // Handle errors
+      });
+  
+      return () => {
+        unsubscribe();
+      };
+    }, [userId]);
+
+    console.log(enrolledCourses)
     
   return (
     <div className=' bg-[#171717] h-screen overflow-scroll min-h-screen flex flex-col'>
@@ -94,33 +201,45 @@ function Home() {
 
             <div className='flex flex-col flex-grow gap-2 m-4'>
 
-         {subjects && subjects.length > 0 && subjects.map((sub)=>{
+         {enrolledCourses && enrolledCourses.length > 0 && enrolledCourses.map((sub,idx)=>{
+            // console.log(sub.attendance.dates[0].seconds)
+            var attended = 0;
+            let attendedToday =false;
+            var hours = 0;
+            sub.attendance.dates.map((day)=>{
+                console.log(day.time)
+                if(areTimestampsEqualIgnoringTime(day.time.seconds)){
+                    attendedToday=true;
+                    hours = day.hour;
+                }
+                attended++;
+            })
             console.log(sub)
-            if(sub.hours==2){
+            if(hours==2 || hours==0){
                 return (
                     <Link key={sub.course_code} href={`/attendance/${sub.course_code}`}>
-                    <div className='relative flex flex-col gap-2  rounded-md shadow-md bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-50%'>
+                    <div className={attendedToday?'relative flex flex-col gap-2  rounded-md shadow-md bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-50%':'relative flex flex-col gap-2  rounded-md shadow-md bg-gradient-to-r from-red-500 from-10% via-red-500 via-30% to-emerald-500 to-50%'}>
                     <div className='z-10 flex flex-col justify-start p-2'>
-                        <h1 className='font-bold'>{timestampToTimeOfDay(sub.time.seconds)}</h1>
+                        <h1 className='font-bold'>{timestampToTimeOfDay(sub.attendance.dates[0].time.seconds)}</h1>
                         <h1 className='text-[1.6rem] leading-none font-bold'>{sub.course_code}</h1>
                         <h1 className='mb-[2rem] text-[3.8rem] leading-none font-semibold'>{sub.course_name}</h1>
                     </div>
                     <div className='absolute bottom-[-1rem] right-0'>
-                        <h1 className='text-white/[70%] text-[9rem]    leading-none'>{sub.attendance}</h1>
+                        <h1 className='text-white/[70%] text-[9rem]    leading-none'>{parseFloat(((attended/sub.completed_hours)*100).toFixed(1))}</h1>
                     </div>
                     </div>
                     </Link>
                 )
             }else{
                 return(
-                    <div key={sub.course_code} className='relative min-h-[6rem]  flex flex-col gap-2  rounded-xl shadow-md bg-gradient-to-r from-red-900 from-10%  to-red-500 to-90%'>
+                    <div key={sub.course_code} className={!attendedToday ? 'relative min-h-[6rem]  flex flex-col gap-2  rounded-xl shadow-md  bg-gradient-to-r from-red-900 from-10%  to-red-500 to-90%': 'relative min-h-[6rem]  flex flex-col gap-2  rounded-xl shadow-md  bg-gradient-to-r from-green-900 from-10%  to-green-500 to-90%'}>
                     <div className='z-10 flex flex-col justify-start p-2'>
-                        <h1 className='font-semibold'>{timestampToTimeOfDay(sub.time.seconds)} {sub.course_code}</h1>
+                        <h1 className='font-semibold'>{timestampToTimeOfDay(sub.attendance.dates[0].time.seconds)} {sub.course_code}</h1>
                         <h1 className='font-semibold text-[3.8rem] leading-none '>{sub.course_name}</h1>
                        
                     </div>
                     <div className='absolute bottom-[-0.5rem] right-0'>
-                        <h1 className='text-white/[70%] text-[6rem]    leading-none'>{sub.attendance}</h1>
+                        <h1 className='text-white/[70%] text-[6rem]    leading-none'>{parseFloat(((attended/sub.completed_hours)*100).toFixed(1))}</h1>
                     </div>
         
                     </div>
@@ -130,7 +249,7 @@ function Home() {
             
          })}
 
-
+{/* 
             <div className='relative min-h-[6rem]  flex flex-col gap-2  rounded-xl shadow-md bg-gradient-to-r from-red-900 from-10%  to-red-500 to-90%'>
             <div className='z-10 flex flex-col justify-start p-2'>
                 <h1 className='font-semibold'>8:45 20CS280</h1>
@@ -188,7 +307,7 @@ function Home() {
             <div className='absolute bottom-[-1rem] right-0'>
                 <h1 className='text-white/[70%] text-[9rem]    leading-none'>75</h1>
             </div>
-            </div>
+            </div> */}
 
             </div>
 
