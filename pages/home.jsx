@@ -333,7 +333,12 @@ function Home() {
                      </div> */}
 <div>
       
+      <div className='p-4 mt-2 relative overflow-hidden h-[16rem]  bg-[#353535] rounded-md shadow-md '>
       <AttendanceChart />
+      <div className='relative  bottom-[10rem] -z-1   backdrop:blur-lg h-[10rem]  w-[100%] bg-gradient-to-b from-[#FF000080]/[50%] to-[#D9D9D900]'>
+
+      </div>
+      </div>
     </div>
 
                      
