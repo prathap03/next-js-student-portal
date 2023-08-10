@@ -3,7 +3,8 @@ import React, {createContext,useContext, useEffect, useState} from 'react'
 import { auth, fireStore } from '../lib/firebase'
 import { Oval } from '../node_modules/react-loader-spinner/dist/index'
 import { doc, onSnapshot } from "firebase/firestore";
-
+import Lottie  from '../node_modules/lottie-react/build/index'
+import * as loaderAnimation from '../components/loader.json'
 
 
 
@@ -93,7 +94,7 @@ export const AuthContextProvider = ({children}:{children: React.ReactNode}) =>{
     
     return (
         <AuthContext.Provider value={{user,userDetails,profile,login,logout,signup}}>
-            {loading ? (<div className='flex items-center justify-center h-screen'><Oval/></div>) :children}
+            {loading ? (<div className='flex items-center justify-center bg-[#171717] h-screen'><Lottie className='scale-[30%]'  animationData={loaderAnimation} loop={true} /></div>) :children}
             </AuthContext.Provider>
     )
 } 
